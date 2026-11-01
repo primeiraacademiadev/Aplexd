@@ -4,14 +4,18 @@
 
 Aplexd é um journal interativo de investimento para analisar transações da Interactive Brokers (IBKR), posições em aberto, opções e rentabilidade.
 
+## Guia para utilizadores e assistentes LLM
+
+Consulta o [guia operacional de utilização](docs/USER_GUIDE.md), que explica o fluxo de ponta a ponta: barra lateral, importação, cotações, script local e interpretação de resultados. O [guia técnico para LLMs](docs/LLM_GUIDE.md) cobre conversão rigorosa de CSV. Consulta `version.json` para verificar a versão em uso.
+
 ## Executar
 
 O dashboard é um ficheiro HTML autónomo. Abre `index.html` no browser ou acede ao GitHub Pages, após publicação.
 
-1. Escolhe **Importar CSV de transações** e seleciona um export de **Histórico de transações** da IBKR.
+1. Abre a barra lateral esquerda (chevron no desktop; deslizar a partir da margem esquerda no telemóvel) e escolhe **Ficheiros → Importar CSV de transações** e seleciona um export de **Histórico de transações** da IBKR.
 2. Consulta a grelha de posições abertas e preenche as cotações do subjacente e de cada opção.
-3. Podes importar/exportar as cotações em CSV para manutenção no Excel.
-4. Explora resultados, posições e timeline. As opções vencidas sem transação de fecho são marcadas com uma nota numerada e tratadas como valores provisórios.
+3. Usa **Ficheiros → Importar cotações / Exportar cotações CSV**; também podes atualizar as cotações através do script local `yfinance`.
+4. Explora resultados, posições e timeline. A timeline representa PnL realizado acumulado e rendimentos, não a valorização histórica diária da carteira. O modo «Apenas percentagens» usa o capital identificável como base e pode ter cobertura parcial. As opções vencidas sem transação de fecho são marcadas com uma nota numerada e tratadas como valores provisórios.
 
 **Privacidade:** Não publiques extratos da conta, carteiras reais, cotações pessoais nem ficheiros contendo identificadores de conta neste repositório público. Os ficheiros importados são processados localmente no navegador. A funcionalidade opcional de obtenção de preços públicos faz pedidos a serviços externos para os símbolos consultados.
 

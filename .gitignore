@@ -156,5 +156,7 @@ aplexd_cotacoes_yahoo.csv
 __pycache__/
 *.pyc
 
-# Private, locally generated quotes
+# Private, locally generated quotes and Python environments
 .quotes/
+.venv/
+venv/

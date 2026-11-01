@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.5",
+  "version": "2026.11.01.6",
   "released": "2026-11-01",
-  "notes": "Listas ordenadas alfabeticamente por símbolo"
+  "notes": "Reconciliacao de PnL por ativo e comparacao com resultado IBKR"
 }

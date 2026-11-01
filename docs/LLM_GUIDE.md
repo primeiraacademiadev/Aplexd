@@ -32,3 +32,4 @@ Objetivo: converter dados **fornecidos pelo utilizador** em CSV aceite pelo Aple
 ## Compatibilidade
 
 Este guia descreve a implementação atual, não um formato independente de corretora totalmente normalizado. Para novas fontes (fora IBKR), o conversor deve mapear as informações para o formato português exigido pelo importador, indicando qualquer perda de informação.
+\n## Orientar a utilização da aplicação\n\nPara guiar alguém na navegação, importação, consultas de preços, execução do script local, leitura dos indicadores e diagnóstico, utilizar também [USER_GUIDE.md](USER_GUIDE.md). Este ficheiro concentra-se na transformação e validação dos CSV. Confirmar a versão em `version.json` antes de fornecer instruções sobre menus e botões.\n

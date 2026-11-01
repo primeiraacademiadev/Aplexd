@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.11",
+  "version": "2026.11.01.12",
   "released": "2026-11-01",
-  "notes": "Limite de 10 cotações individuais MarketData por execução, sem consultas de cadeias completas"
+  "notes": "Remocao da Cboe e painel de reconciliacao, token MarketData cifrado localmente"
 }

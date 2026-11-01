@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.19",
+  "version": "2026.11.01.20",
   "released": "2026-11-01",
-  "notes": "Menu hamburguer para ficheiros, consultas e manutencao"
+  "notes": "Barra lateral colapsavel e timeline em percentagens conforme apresentacao"
 }

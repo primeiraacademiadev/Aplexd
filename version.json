@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.15",
+  "version": "2026.11.01.16",
   "released": "2026-11-01",
-  "notes": "Indicador de PnL total estimado, realizado + dividendos + latente"
+  "notes": "Ordenacao do grafico de resultados por simbolo e contribuicao realizada"
 }

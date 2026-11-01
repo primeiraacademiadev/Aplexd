@@ -28,6 +28,29 @@ O Aplexd recebe **dois CSV distintos**:
 
 **Ordem de utilização:** importa primeiro as transações e depois as cotações. O segundo ficheiro não abre nem fecha posições; os identificadores de contratos devem corresponder aos das transações. O exemplo de cotações inclui também um contrato já fechado, apenas para ilustrar o formato — não aparecerá entre as posições abertas.
 
+## Atualizar cotações com yfinance (Python local)
+
+O utilitário [`tools/aplexd_yfinance.py`](tools/aplexd_yfinance.py) consulta cadeias de opções do Yahoo Finance via `yfinance` e produz um CSV compatível com **Importar cotações**. Não usa a conta IBKR nem consome créditos da MarketData.app.
+
+Requer Python 3.10+:
+
+```bash
+python -m pip install yfinance
+python tools/aplexd_yfinance.py "cotacoes_exportadas.csv" -o "cotacoes_atualizadas.csv"
+```
+
+**Fluxo preferido:** importar as transações no Aplexd → **Exportar cotações CSV** → executar o script com o ficheiro exportado → **Importar cotações** e escolher **Cancelar** quando perguntar se deve limpar os campos existentes. Em alternativa, o script aceita diretamente um histórico de transações IBKR em português, mas a reconstrução de posições por somatório de quantidades pode não refletir corretamente atribuições e eventos societários.
+
+Para aplicar limites mais conservadores:
+
+```bash
+python tools/aplexd_yfinance.py "cotacoes_exportadas.csv" -o "cotacoes_atualizadas.csv" --delay 5 --cache-hours 12 --max-requests 20
+```
+
+Para instrumentos em bolsas específicas, `--ticker SGLD=SGLD.L` permite identificar o símbolo Yahoo. **Atenção:** o script deixa preços de bolsas com moedas potencialmente diferentes de USD em branco; verifica moeda e bolsa manualmente no Aplexd.
+
+A cache fica na pasta `.aplexd_yahoo_cache` junto do ficheiro de saída. Não publiques dados da carteira, ficheiros gerados ou cache no repositório. Os dados Yahoo são não oficiais e podem estar atrasados, incompletos ou sujeitos a bloqueios; `--delay` e cache mitigam pedidos repetidos, mas não garantem disponibilidade. A data do último negócio não é a data da cotação bid/ask; o script deixa o timestamp vazio quando usa midpoint.
+
 ## Publicar no GitHub Pages
 
 1. Coloca o dashboard completo na raiz do repositório com o nome `index.html`.

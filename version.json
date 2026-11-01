@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.9",
+  "version": "2026.11.01.10",
   "released": "2026-11-01",
-  "notes": "Diagnostico de importacoes e consultas externas"
+  "notes": "Importação MarketData: mid, IV e timestamps por contrato"
 }

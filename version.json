@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.8",
+  "version": "2026.11.01.9",
   "released": "2026-11-01",
-  "notes": "Correção da deteção de versões e comparação consistente"
+  "notes": "Diagnostico de importacoes e consultas externas"
 }

@@ -49,6 +49,8 @@ python tools/aplexd_yfinance.py "cotacoes_exportadas.csv" -o "cotacoes_atualizad
 
 Para instrumentos em bolsas específicas, `--ticker SGLD=SGLD.L` permite identificar o símbolo Yahoo. **Atenção:** o script deixa preços de bolsas com moedas potencialmente diferentes de USD em branco; verifica moeda e bolsa manualmente no Aplexd.
 
+**Proteção de símbolos e preços:** o mesmo ticker pode representar instrumentos distintos em bolsas diferentes (por exemplo, um ETF em Londres e uma ação nos EUA). Confirma o símbolo Yahoo com `--ticker ORIGEM=DESTINO` e a moeda do instrumento. O script rejeita diferenças superiores a 50% face ao preço de referência do CSV, e o importador pede confirmação antes de sobrepor preços que variem mais de 50%. Estes controlos não substituem uma validação da identidade do ativo. **Se uma cotação incorreta já tiver sido importada, corrige-a manualmente antes de voltar a importar.**
+
 A cache fica na pasta `.aplexd_yahoo_cache` junto do ficheiro de saída. Não publiques dados da carteira, ficheiros gerados ou cache no repositório. Os dados Yahoo são não oficiais e podem estar atrasados, incompletos ou sujeitos a bloqueios; `--delay` e cache mitigam pedidos repetidos, mas não garantem disponibilidade. A data do último negócio não é a data da cotação bid/ask; o script deixa o timestamp vazio quando usa midpoint.
 
 ## Publicar no GitHub Pages

@@ -8,6 +8,7 @@ import math
 import re
 import sys
 import time
+import warnings
 from collections import defaultdict
 from pathlib import Path
 
@@ -185,6 +186,14 @@ def main():
     a=p.parse_args()
     if a.delay<0 or a.max_requests<1:
         p.error('--delay deve ser >=0 e --max-requests >=1')
+    # yfinance 1.7.0 calls DataFrame.sort_index(inplace=True), deprecated in
+    # pandas 3.1. Hide only this known upstream compatibility warning.
+    warnings.filterwarnings(
+        "ignore",
+        message=r"The inplace keyword in DataFrame\\.sort_index is deprecated.*",
+        category=Warning,
+        module=r"yfinance\\.utils",
+    )
     try:
         import yfinance as yf
     except ImportError:

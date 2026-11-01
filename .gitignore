@@ -155,3 +155,6 @@ cotacoes_atualizadas.csv
 aplexd_cotacoes_yahoo.csv
 __pycache__/
 *.pyc
+
+# Private, locally generated quotes
+.quotes/

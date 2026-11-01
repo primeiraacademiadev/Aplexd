@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.14",
+  "version": "2026.11.01.15",
   "released": "2026-11-01",
-  "notes": "Alertas para variacoes anormais de cotacoes e protecao de simbolos"
+  "notes": "Indicador de PnL total estimado, realizado + dividendos + latente"
 }

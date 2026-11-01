@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.4",
+  "version": "2026.11.01.5",
   "released": "2026-11-01",
-  "notes": "Bolsa e ticker configuráveis por instrumento, guardados no browser"
+  "notes": "Listas ordenadas alfabeticamente por símbolo"
 }

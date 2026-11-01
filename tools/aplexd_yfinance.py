@@ -78,11 +78,13 @@ def read_positions(path):
         if not {'contract','quantity'}.issubset(reader.fieldnames or []):
             raise ValueError('Entrada deve ser CSV IBKR ou CSV exportado pelo Aplexd com contract e quantity.')
         positions = {}
+        reference_spots = {}
         for r in reader:
             contract = r['contract'].strip().upper()
             q = num(r['quantity'])
             if contract and q is not None:
                 positions[contract] = q
+                reference_spots[contract] = positive(r.get('underlying_price_usd')) or positive(r.get('option_price_usd')) if contract == (r.get('underlying') or contract) else positive(r.get('underlying_price_usd'))
         print('Fonte: CSV de cotações Aplexd (quantidades já exportadas).')
     today = dt.datetime.now(dt.timezone.utc).date()
     out = []
@@ -90,6 +92,8 @@ def read_positions(path):
         if abs(q)<1e-8:
             continue
         item = description(contract, q)
+        if not headers:
+            item['reference_spot'] = reference_spots.get(contract)
         if item['type']=='OPTION' and dt.date.fromisoformat(item['expiry']) < today:
             continue
         out.append(item)
@@ -225,7 +229,12 @@ def main():
             if ticker_symbol.upper().endswith(('.L','.PA','.DE','.MI','.LS')):
                 print(f'[AVISO] {symbol}: confirmar moeda Yahoo antes de importar, preço deixado vazio.',file=sys.stderr)
             else:
-                out['underlying_price_usd']=spot['price'] or ''
+                reference=positive(pos.get('reference_spot'))
+                candidate=positive(spot['price'])
+                if reference and candidate and not 0.5<=candidate/reference<=2:
+                    print(f'[ALERTA] {symbol}: Yahoo {candidate:.3f} versus CSV {reference:.3f} (>50%): possível ticker de instrumento diferente. Preço NÃO exportado. Usa --ticker ou verifica a bolsa.', file=sys.stderr)
+                    candidate=None
+                out['underlying_price_usd']=candidate or ''
                 out['underlying_timestamp_utc']=spot['time']
             if pos['type']=='OPTION':
                 occ=pos['contract'].replace(' ','').upper()
@@ -243,7 +252,7 @@ def main():
                 else:
                     print(f'[AVISO] {occ}: contrato ausente ou moeda diferente de USD',file=sys.stderr)
             elif not ticker_symbol.upper().endswith(('.L','.PA','.DE','.MI','.LS')):
-                out['option_price_usd']=spot['price'] or ''
+                out['option_price_usd']=candidate or ''
                 out['quote_timestamp_utc']=spot['time']
             results.append(out)
     a.output.parent.mkdir(parents=True, exist_ok=True)

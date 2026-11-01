@@ -147,3 +147,11 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Aplexd: local portfolio data and Yahoo cache (never publish)
+.aplexd_yahoo_cache/
+**/.aplexd_yahoo_cache/
+cotacoes_atualizadas.csv
+aplexd_cotacoes_yahoo.csv
+__pycache__/
+*.pyc

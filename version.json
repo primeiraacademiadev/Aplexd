@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.21",
+  "version": "2026.11.01.22",
   "released": "2026-11-01",
-  "notes": "Barra lateral estreita com chevron e gestos swipe em dispositivos moveis"
+  "notes": "Faixa lateral uniforme em toda a altura do ecra"
 }

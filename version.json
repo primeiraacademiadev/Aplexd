@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.10",
+  "version": "2026.11.01.11",
   "released": "2026-11-01",
-  "notes": "Importação MarketData: mid, IV e timestamps por contrato"
+  "notes": "Limite de 10 cotações individuais MarketData por execução, sem consultas de cadeias completas"
 }

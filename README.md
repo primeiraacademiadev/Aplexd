@@ -28,6 +28,17 @@ O Aplexd recebe **dois CSV distintos**:
 
 **Ordem de utilização:** importa primeiro as transações e depois as cotações. O segundo ficheiro não abre nem fecha posições; os identificadores de contratos devem corresponder aos das transações. O exemplo de cotações inclui também um contrato já fechado, apenas para ilustrar o formato — não aparecerá entre as posições abertas.
 
+## Lançadores interativos (Windows / Linux / macOS)
+
+Na raiz do repositório, guarda os CSV de entrada na pasta privada `.quotes/`. Os lançadores mostram os ficheiros `*.csv` que não terminam em `.out.csv`, colocam primeiro os que ainda não têm saída e sugerem o primeiro por processar. Podes escolher outro ficheiro pelo número. A saída segue sempre `nome.out.csv` (por exemplo, `Aplexd_cotacoes.csv` → `Aplexd_cotacoes.out.csv`). Se a saída já existir, é pedida confirmação antes de substituir.
+
+- **Windows (CMD):** `run.bat` (usa `.venv\\Scripts\\python.exe`, se existir).
+- **Linux/macOS:** `sh run.sh` (usa `.venv/bin/python`, se existir).
+
+Ambos aceitam argumentos opcionais para afinar o processo, por exemplo `run.bat --delay 5 --max-requests 20 --ticker SGLD=SGLD.L` ou `sh run.sh --delay 5 --ticker SGLD=SGLD.L`. Instala primeiro `yfinance` no Python selecionado.
+
+**Atenção:** os lançadores não validam a identidade bolsista do ticker. Para instrumentos cujo símbolo Yahoo difere do ticker IBKR, fornece `--ticker ORIGEM=YAHOO`; confirma sempre moeda e cotação. Os ficheiros `.quotes/` ficam ignorados pelo Git.
+
 ## Atualizar cotações com yfinance (Python local)
 
 O utilitário [`tools/aplexd_yfinance.py`](tools/aplexd_yfinance.py) consulta cadeias de opções do Yahoo Finance via `yfinance` e produz um CSV compatível com **Importar cotações**. Não usa a conta IBKR nem consome créditos da MarketData.app.

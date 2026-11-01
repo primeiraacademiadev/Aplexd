@@ -1,0 +1,5 @@
+"Histórico de transações","Header","Data","Conta","Descrição","Tipo de transação","Símbolo","Quantidade","Preço","Moeda do preço","Valor bruto","Taxa de corretagem","Valor líquido"
+"Histórico de transações","Data","2026-10-02","DEMO","Compra fictícia de ações","Compra","ALPD","10","50","USD","-450","-1","-451"
+"Histórico de transações","Data","2026-10-09","DEMO","Venda parcial fictícia de ações","Venda","ALPD","-4","55","USD","198","-1","197"
+"Histórico de transações","Data","2026-10-10","DEMO","Compra fictícia de put","Compra","BTDM 261120P00025000","2","0.80","USD","-144","-2","-146"
+"Histórico de transações","Data","2026-10-21","DEMO","Venda fictícia de put","Venda","BTDM 261120P00025000","-2","1.20","USD","216","-2","214"

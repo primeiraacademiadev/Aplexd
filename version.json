@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.7",
+  "version": "2026.11.01.8",
   "released": "2026-11-01",
-  "notes": "Consulta em cascata Cboe e MarketData.app para preços e IV de opções"
+  "notes": "Correção da deteção de versões e comparação consistente"
 }

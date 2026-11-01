@@ -65,3 +65,11 @@ Ver [examples/cotacoes_demo.csv](../examples/cotacoes_demo.csv). O exemplo de co
 5. Verificar manualmente quantidade, direção long/short, moeda, strike, vencimento e total antes de confiar no PnL.
 
 **Privacidade:** nunca colocar CSV reais da conta, identificadores pessoais ou extratos IBKR num repositório público.
+
+## 4. Gerador local yfinance
+
+O script [`tools/aplexd_yfinance.py`](../tools/aplexd_yfinance.py) recebe o CSV de cotações exportado pelo Aplexd (recomendado) ou o histórico de transações IBKR e escreve exatamente as colunas definidas na secção 2. Executar com `python tools/aplexd_yfinance.py entrada.csv -o saida.csv` após instalar `yfinance`.
+
+A consulta de opções é feita por subjacente e data de vencimento, com throttling, cache e limite de chamadas. O script utiliza midpoint de bid/ask positivos, ou último negócio recente quando não existe midpoint válido; não preenche preços ausentes com estimativas. IVs reportadas como decimais são convertidas em percentagem. Sem timestamp de bid/ask verificável, `quote_timestamp_utc` fica vazio.
+
+Atenção: ao importar o CSV gerado, **Cancelar** a opção de limpar os campos previamente preenchidos. O importador preserva preços se o novo campo estiver vazio, mas podem ser atualizados metadados e IVs. Verifica a atualidade dos preços e a moeda antes de utilizar o PnL estimado.

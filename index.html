@@ -144,7 +144,8 @@ function reloadApp(preserve){
 }
 function offerUpdate(version){
  const el=$('updateNotice');el.hidden=false;el.textContent='Nova versão '+version+' disponível';
- if(!confirm('Existe uma nova versão do Aplexd ('+version+'). Atualizar agora?'))return;
+ if(sessionStorage.getItem('aplexd-update-deferred')===version)return;
+ if(!confirm('Existe uma nova versão do Aplexd ('+version+'). Atualizar agora?')){sessionStorage.setItem('aplexd-update-deferred',version);return;}
  reloadApp(confirm('Queres manter os dados importados e os filtros durante a atualização?\nOK = manter dados; Cancelar = carregar sem restaurar a sessão.'));
 }
 async function checkVersion(){

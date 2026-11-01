@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.6",
+  "version": "2026.11.01.7",
   "released": "2026-11-01",
-  "notes": "Reconciliacao de PnL por ativo e comparacao com resultado IBKR"
+  "notes": "Consulta em cascata Cboe e MarketData.app para preços e IV de opções"
 }

@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.12",
+  "version": "2026.11.01.13",
   "released": "2026-11-01",
-  "notes": "Remocao da Cboe e painel de reconciliacao, token MarketData cifrado localmente"
+  "notes": "Diagnostico local de valorizacao sem consultar fornecedores pagos"
 }

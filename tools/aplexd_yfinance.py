@@ -254,7 +254,7 @@ def main():
             elif not ticker_symbol.upper().endswith(('.L','.PA','.DE','.MI','.LS')):
                 out['option_price_usd']=candidate or ''
                 out['quote_timestamp_utc']=spot['time']
-            results.append(out)
+            results.append({key: out.get(key, '') for key in HEADERS})
     a.output.parent.mkdir(parents=True, exist_ok=True)
     with a.output.open('w',encoding='utf-8-sig',newline='') as f:
         writer=csv.DictWriter(f,fieldnames=HEADERS)

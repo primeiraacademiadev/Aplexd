@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.20",
+  "version": "2026.11.01.21",
   "released": "2026-11-01",
-  "notes": "Barra lateral colapsavel e timeline em percentagens conforme apresentacao"
+  "notes": "Barra lateral estreita com chevron e gestos swipe em dispositivos moveis"
 }

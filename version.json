@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.13",
+  "version": "2026.11.01.14",
   "released": "2026-11-01",
-  "notes": "Diagnostico local de valorizacao sem consultar fornecedores pagos"
+  "notes": "Alertas para variacoes anormais de cotacoes e protecao de simbolos"
 }

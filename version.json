@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.3",
+  "version": "2026.11.01.4",
   "released": "2026-11-01",
-  "notes": "Barra fixa e mapeamento seguro do Invesco Physical Gold ETC (SGLD.L, USD)"
+  "notes": "Bolsa e ticker configuráveis por instrumento, guardados no browser"
 }

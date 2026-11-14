@@ -38,7 +38,7 @@ As ações e opções podem ter cotações de fontes ou datas diferentes. As op�
 
 **Via Python local, sem créditos MarketData.app (preferido para muitas posições):**
 
-1. Na barra lateral → **Ficheiros → Exportar cotações CSV**.
+1. Na barra lateral → **Ficheiros → Exportar cotações CSV**. O nome descarregado inclui a data e hora locais: `Aplexd_cotacoes_AAAAMMDD_HHMMSS.csv`. Isto assinala a exportação, **não** a frescura dos preços.
 2. Guardar o CSV exportado na pasta privada `.quotes/` da cópia local do repositório.
 3. Instalar `yfinance` no Python do projeto: `python -m pip install yfinance` ou, no Windows, `.venv\\Scripts\\python.exe -m pip install yfinance`.
 4. Executar `run.bat` no Windows ou `sh run.sh` no Linux/macOS.

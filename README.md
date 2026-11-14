@@ -32,6 +32,8 @@ O Aplexd recebe **dois CSV distintos**:
 
 **Ordem de utilização:** importa primeiro as transações e depois as cotações. O segundo ficheiro não abre nem fecha posições; os identificadores de contratos devem corresponder aos das transações. O exemplo de cotações inclui também um contrato já fechado, apenas para ilustrar o formato — não aparecerá entre as posições abertas.
 
+**Nomes dos CSV exportados pelo browser:** cada descarga inclui a data e hora locais, no formato `Aplexd_cotacoes_AAAAMMDD_HHMMSS.csv` (por exemplo, `Aplexd_cotacoes_20261114_114600.csv`). O sufixo identifica o momento da exportação, não a hora das cotações. O script local continua a acrescentar `.out.csv` ao nome do ficheiro de entrada.
+
 ## Lançadores interativos (Windows / Linux / macOS)
 
 Na raiz do repositório, guarda os CSV de entrada na pasta privada `.quotes/`. Os lançadores mostram os ficheiros `*.csv` que não terminam em `.out.csv`, colocam primeiro os que ainda não têm saída e sugerem o primeiro por processar. Podes escolher outro ficheiro pelo número. A saída segue sempre `nome.out.csv` (por exemplo, `Aplexd_cotacoes.csv` → `Aplexd_cotacoes.out.csv`). Se a saída já existir, é pedida confirmação antes de substituir.

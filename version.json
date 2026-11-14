@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.01.22",
-  "released": "2026-11-01",
-  "notes": "Faixa lateral uniforme em toda a altura do ecra"
+  "version": "2026.11.14.1",
+  "released": "2026-11-14",
+  "notes": "Exportacoes CSV incluem data e hora locais no nome do ficheiro"
 }

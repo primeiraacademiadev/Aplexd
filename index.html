@@ -80,7 +80,13 @@ function stamp(key,kind='manual',at=new Date().toISOString()){priceTimes[key]={k
 function timeLabel(symbol){let t=priceTimes[symbol];if(!t)return 'Preço anterior ao registo de timestamps — atualizar cotação';let d=new Date(t.at);return (t.kind==='mercado'?'Mercado':'Registo')+': '+(isNaN(d)?'sem data':d.toLocaleString('pt-PT',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Lisbon'}))+' (Lisboa)'}
 
 function saveQuotes(){localStorage.setItem('aplexdis-underlying-v1',JSON.stringify(underlyingQuotes));localStorage.setItem('aplexdis-quotes-v1',JSON.stringify(quotes));localStorage.setItem('aplexdis-quotedetails-v2',JSON.stringify(quoteDetails))}
-function downloadText(data,name,mime){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([data],{type:mime}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1200)}
+function exportFileName(name){
+ const now=new Date(),pad=n=>String(n).padStart(2,'0');
+ const timestamp=now.getFullYear()+pad(now.getMonth()+1)+pad(now.getDate())+'_'+pad(now.getHours())+pad(now.getMinutes())+pad(now.getSeconds());
+ const dot=name.lastIndexOf('.'),base=dot>0?name.slice(0,dot):name,ext=dot>0?name.slice(dot):'';
+ return base+'_'+timestamp+ext;
+}
+function downloadText(data,name,mime){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([data],{type:mime}));a.href=url;a.download=exportFileName(name);a.click();setTimeout(()=>URL.revokeObjectURL(url),1200)}
 function optionInfo(contract){let m=String(contract).match(/\s+(\d{2})(\d{2})(\d{2})([CP])(\d{8})$/);if(!m)return null;return {expiry:'20'+m[1]+'-'+m[2]+'-'+m[3],cp:m[4],strike:Number(m[5])/1000}}
 function erfApprox(x){let s=x<0?-1:1;x=Math.abs(x);let t=1/(1+.3275911*x);return s*(1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x))}
 function norm(z){return .5*(1+erfApprox(z/Math.SQRT2))}
@@ -300,7 +306,7 @@ $('autoUnderlying').onclick=async()=>{
  }catch(e){failed.push(symbol);logError('underlyings.request.failure '+symbol,e)}}saveQuotes();render();log('underlyings.lookup.complete',{success:ok,failed});$('toast').textContent='Consulta pública: '+ok+' preços preenchidos'+(failed.length+' sem resultado ('+failed.join(', ')+').');}
  finally{$('autoUnderlying').disabled=false}
 };
-const APP_VERSION='2026.11.01.22',SESSION_KEY='aplexd-refresh-state-v1';
+const APP_VERSION='2026.11.14.1',SESSION_KEY='aplexd-refresh-state-v1';
 function captureSession(){
  return {raw,sourceName,displayMode,fx,quotes,quoteDetails,underlyingQuotes,priceTimes,exchangePrefs,search:$('search').value,filter:$('filter').value,selected:$('symbolTimeline').value};
 }
